@@ -1,0 +1,7 @@
+django
+psycopg2-binary
+psycopg2
+django-jazzmin
+djangorestframework
+virtualenv
+django-bootstrap-v5
