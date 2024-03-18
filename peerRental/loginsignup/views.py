@@ -11,8 +11,7 @@ def login_user(req):
         if not CustomUser.objects.filter(email=email).exists():
             messages.error(req,'No registered email!')
             return redirect('login')
-        elif email=='admin' and password=='Drc@1234':
-            user = authenticate(req,email=email,password=password)
+        elif email=='admin@gmail.com' and password=='Drc@1234':
             login(req,user)
             return redirect('/adminpanel')
         else:
@@ -40,7 +39,7 @@ def signup_user(req):
             messages.error(req,'Email-Id already exists!')
             return redirect('signup')
         else:
-            CustomUser.objects.create(
+            user = CustomUser.objects.create_user(
                 email=email,
                 username=username,
                 first_name=first_name,
@@ -49,6 +48,7 @@ def signup_user(req):
                 address=address,
                 password=password,
             )
+            user.save()
             user = authenticate(req,email=email,password=password)
             if user is None:
                 messages.error(req,'Password is incorrect!')
