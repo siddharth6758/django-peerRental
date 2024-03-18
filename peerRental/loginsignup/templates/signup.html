@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Django | signup
+{% endblock title %}
+    
+
+{% block navbar %}
+<div class="container position-relative">
+    <header class="w-100 d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
+      <div class="col-md-3 mb-2 mb-md-0">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+            <img src="{% static 'public/logo.png' %}" alt="logo" width="250px" height="120px">
+        </a>
+      </div>
+
+      <div class="col-md-3 text-end">
+        <a href="/login" class="btn btn-outline-primary me-2">Login</a>
+        <a href="/" class="btn btn-primary">Home</a>
+      </div>
+    </header>
+  </div>
+{% endblock navbar %}
+
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+      <div class="container {{message.tags}} my-3">{{message}}</div>
+    {% endfor %} 
+  {% endif %}
+    <div class="modal-dialog">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header p-5 pb-4 border-bottom-0">
+          <h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
+        </div>
+  
+        <div class="p-5 pt-0">
+          <form class="" method="POST">
+            {% csrf_token %}
+              <input type="email" class="form-control mb-3 rounded-3" id="floatingInput" placeholder="Enter Email-Id:" name="email">
+              <input type="text" class="form-control mb-3 rounded-3" id="floatingInput" placeholder="Enter username:" name="username">
+              <input type="text" class="form-control mb-3 rounded-3" id="floatingInput" placeholder="Enter Firstname:" name="first_name">
+              <input type="text" class="form-control mb-3 rounded-3" id="floatingInput" placeholder="Enter Lastname:" name="last_name">
+              <input type="text" class="form-control mb-3 rounded-3" id="floatingInput" placeholder="Enter Phone No:" name="phone">
+              <input type="text" class="form-control mb-3 rounded-3" id="floatingInput" placeholder="Enter Address:" name="address">
+              <input type="password" class="form-control mb-3 rounded-3" id="floatingPassword" placeholder="Password" name="password">
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+            <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+          </form>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
+    
+    
