@@ -9,7 +9,9 @@ def uploadproduct(req):
     if req.method == 'POST':
         forms = ProductFrom(req.POST,req.FILES)
         if forms.is_valid():
-            forms.save()
+            product = forms.save(commit=False)
+            product.posted_by_id = req.user.id
+            product.save()
             messages.success(req,'Product uploaded successfully!')
             return redirect(f'/user/{req.user.id}')
         else:
