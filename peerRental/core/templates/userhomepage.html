@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Django | User
+{% endblock title %}
+    
+
+{% block navbar %}
+<div class="container position-relative">
+    <header class="z-2 w-100 position-absolute d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
+      <div class="col-md-3 mb-2 mb-md-0">
+        <a href="/user/{{id}}" class="d-inline-flex link-body-emphasis text-decoration-none"><img src="{% static 'public/logo.png' %}" alt="logo" width="250px" height="120px" /></a>
+      </div>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li>
+          <a href="#" class="nav-link px-2 link-secondary">Home</a>
+        </li>
+        <li>
+          <a href="#" class="nav-link px-2">Features</a>
+        </li>
+        <li>
+          <a href="#" class="nav-link px-2">Pricing</a>
+        </li>
+        <li>
+          <a href="/uploadproduct" class="nav-link px-2">Upload</a>
+        </li>
+        <li>
+          <a href="#" class="nav-link px-2">About</a>
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center">
+        <a href="/userpage" id='user-btn' class="text-decoration-none mx-4 rounded-circle border border-secondary">
+            <img src="{% static 'public/user.png' %}" alt="user" width="100%" class="rounded-circle">
+            {{user.username}}
+        </a>
+        <a href="/logout" class="btn btn-primary">Logout</a>
+      </div>
+    </header>
+  </div>
+{% endblock navbar %}
+
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+      <div class="container {{message.tags}} my-3">{{message}}</div>
+    {% endfor %} 
+  {% endif %}
+  <div class="" id="banner">
+    <img src="{% static 'public/banner.png' %}" alt="banner" width="100%" />
+  </div>
+  <div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom">Products</h2>
+  </div>
+  <div class="container my-4">
+    <div class="d-flex flex-wrap">
+
+    </div>
+  </div>
+{% endblock content %}
+    
+    

@@ -5,5 +5,6 @@ urlpatterns = [
     path('login/',lsv.login_user,name='login'),
     path('signup/',lsv.signup_user,name='signup'),
     path('adminpanel/',lsv.adminlogin,name='adminlogin'),
+    path('logout/',lsv.logout_user,name='logout'),
     path('user/<int:id>',lsv.userhomepage,name='userhome'),
 ]

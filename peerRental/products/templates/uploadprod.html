@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block title %}
+    Django | Upload Product
+{% endblock title %}
+    
+
+{% block navbar %}
+<div class="container position-relative">
+    <header class="w-100 d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
+      <div class="col-md-3 mb-2 mb-md-0">
+        <a href="/user/{{id}}" class="d-inline-flex link-body-emphasis text-decoration-none">
+            <img src="{% static 'public/logo.png' %}" alt="logo" width="250px" height="120px">
+        </a>
+      </div>
+
+      <div class="col-md-3 text-end">
+          <a href="/user/{{id}}" class="btn btn-primary">Back</a>
+          <a href="/editpage" class="btn btn-outline-primary me-2">Edit</a>
+      </div>
+    </header>
+  </div>
+{% endblock navbar %}
+
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+      <div class="container {{message.tags}} my-3">{{message}}</div>
+    {% endfor %} 
+  {% endif %}
+    <div class="modal-dialog">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header p-5 pb-4 border-bottom-0">
+          <h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
+        </div>
+  
+        <div class="p-5 pt-0">
+          <form class="" method="POST">
+            {% csrf_token %}
+            {% render_field forms.title class="form-control mb-3" placeholder="Enter Title" name="title" %}                
+            {% render_field forms.description class="form-control mb-3" placeholder="Enter Description" name="description" %}                
+            {% render_field forms.prod_img class="form-control mb-3" placeholder="Upload image" name="prod_img" %}
+            <div class="d-flex">
+                {% render_field forms.prod_price class="form-control mb-3 w-50 me-2" placeholder="Enter Price" name="prod_price" %}                
+                {% render_field forms.rent_type class="form-control mb-3 w-50" placeholder="Enter Rent type" name="rent_type" %}                
+            </div>            
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Upload</button>
+          </form>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
+    
+    

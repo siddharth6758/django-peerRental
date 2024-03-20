@@ -65,5 +65,11 @@ def adminlogin(req):
 @login_required(login_url='/login/')
 def userhomepage(req,id):
     return render(req,'userhomepage.html',context={
-        
+        'id':id,
+        'user':req.user,
     })
+    
+@login_required(login_url='/login/')
+def logout_user(req):
+    logout(req)
+    return redirect('home')
